@@ -1,11 +1,11 @@
 draw_config:
   dark_mode: auto
-  key_w: 60
-  key_h: 56
+  key_w: 66
+  key_h: 62
   key_rx: 6
   key_ry: 6
-  combo_w: 34
-  combo_h: 26
+  combo_w: 46
+  combo_h: 32
   inner_pad_w: 2
   inner_pad_h: 2
   outer_pad_w: 24
@@ -15,14 +15,16 @@ draw_config:
   svg_style: |
     svg {
       font-family: ui-monospace, SFMono-Regular, Consolas, Liberation Mono, monospace;
-      font-size: 14px;
+      font-size: 11.5px;
       text-rendering: optimizeLegibility;
     }
     rect { fill: #f6f8fa; stroke: #afb8c1; stroke-width: 1; }
     rect.held { fill: #ffebe9; }
     rect.combo { fill: #ddf4ff; }
     text { text-anchor: middle; dominant-baseline: middle; }
-    text.label { font-weight: 700; text-anchor: start; }
-    text.hold, text.shifted, text.combo { font-size: 11px; }
+    text.label { font-size: 14px; font-weight: 700; text-anchor: start; }
+    text.hold, text.shifted { font-size: 8px; }
+    text.hold { transform: translateY(-5px); }
+    text.shifted { transform: translateY(5px); }
+    text.combo { font-size: 9px; }
     path { stroke: #57606a; stroke-width: 1; fill: none; }
-
