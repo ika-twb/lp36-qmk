@@ -137,12 +137,12 @@ path { stroke: #57606a; stroke-width: 1; fill: none; }
 <g transform="translate(558, 155)" class="key keypos-27">
 <rect rx="6" ry="6" x="-29" y="-29" width="58" height="58" class="key"/>
 <text x="0" y="0" class="key tap">,</text>
-<text x="0" y="-27" class="key shifted">; / &lt;</text>
+<text x="0" y="-27" class="key shifted">;</text>
 </g>
 <g transform="translate(620, 155)" class="key keypos-28">
 <rect rx="6" ry="6" x="-29" y="-29" width="58" height="58" class="key"/>
 <text x="0" y="0" class="key tap">.</text>
-<text x="0" y="-27" class="key shifted">: / &gt;</text>
+<text x="0" y="-27" class="key shifted">:</text>
 </g>
 <g transform="translate(682, 155)" class="key keypos-29">
 <rect rx="6" ry="6" x="-29" y="-29" width="58" height="58" class="key"/>

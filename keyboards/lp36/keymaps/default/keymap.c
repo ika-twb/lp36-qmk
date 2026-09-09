@@ -525,16 +525,12 @@ bool pre_process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     uint8_t shifts = get_mods() & MOD_MASK_SHIFT;
-    uint8_t ctrls = get_mods() & MOD_MASK_CTRL;
 
     switch (keycode) {
         case CM_MORPH:
             if (record->event.pressed) {
                 if (!shifts) {
                     tap_code(KC_COMM);
-                } else if (ctrls) {
-                    /* Both nested ZMK mod-morphs mask their trigger mods. */
-                    tap_with_suppressed_mods(shifts | ctrls, S(KC_COMM));
                 } else {
                     tap_with_suppressed_mods(shifts, KC_SCLN);
                 }
@@ -544,8 +540,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 if (!shifts) {
                     tap_code(KC_DOT);
-                } else if (ctrls) {
-                    tap_with_suppressed_mods(shifts | ctrls, S(KC_DOT));
                 } else {
                     tap_with_suppressed_mods(shifts, S(KC_SCLN));
                 }
