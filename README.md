@@ -1,7 +1,6 @@
 # LP36 QMK firmware
 
-My 36-key LP36 QMK layout for Windows, ported from the `win_work` keymap on my
-Temper. The layout is inspired by
+My 36-key LP36 QMK layout for Windows, inspired by
 [Miryoku](https://github.com/manna-harbour/miryoku) and
 [urob's ZMK config](https://github.com/urob/zmk-config).
 
