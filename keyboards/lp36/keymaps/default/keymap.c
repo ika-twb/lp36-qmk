@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [NAV] = LAYOUT(
         KC_NO,   KC_NO,   LCTL(LSFT(KC_LBRC)), LCTL(LSFT(KC_RBRC)), KC_NO,
-                                                         LCTL(KC_UP), LCTL(KC_RGHT), LCTL(KC_LEFT), LCTL(KC_DOWN), KC_NO,
+                                                         LCTL(KC_LEFT), LCTL(KC_DOWN), LCTL(KC_UP), LCTL(KC_RGHT), KC_NO,
         LALT(KC_F4), LALT(KC_TAB), LCTL(LGUI(KC_LEFT)), LCTL(LGUI(KC_RGHT)), KC_NO,
                                                          KC_LEFT,  KC_DOWN, KC_UP,    KC_RGHT, KC_CAPS,
         KC_LSFT, KC_NO,   LGUI(LSFT(KC_LBRC)), LGUI(LSFT(KC_RBRC)), KC_NO,

@@ -29,7 +29,7 @@ layers:
     - {t: Enter, h: NUM}
     - {t: Del, h: FUNC}
   NAV:
-  - ['', '', 'Ctl+Sft+[', 'Ctl+Sft+]', '', Paragraph Up, Word Forward, Word Backward, Paragraph Down, '']
+  - ['', '', 'Ctl+Sft+[', 'Ctl+Sft+]', '', Word Backward, Paragraph Down, Paragraph Up, Word Forward, '']
   - [Alt+F4, Alt+TAB, Ctl+Gui+LEFT, Ctl+Gui+RGHT, '', LEFT, DOWN, UP, RGHT, CAPS]
   - [LSFT, '', 'Gui+Sft+[', 'Gui+Sft+]', '', HOME, PGDN, PGUP, END, INS]
   - - ''
