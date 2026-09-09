@@ -33,7 +33,19 @@ jobs:
           path: qmk_firmware
 
       - name: Install LP36 overlay
-        run: cp -R userspace/keyboards/lp36 qmk_firmware/keyboards/lp36
+        run: |
+          cp -R userspace/keyboards/lp36 qmk_firmware/keyboards/lp36
+          cp -R userspace/tests/lp36_behavior qmk_firmware/tests/lp36_behavior
+
+      - name: Verify main diagram source matches QMK
+        run: |
+          python -m pip install keymap-drawer==0.22.0
+          userspace/scripts/sync-keymap.sh qmk_firmware
+          git -C userspace diff --exit-code -- keymap-drawer/lp36.yaml
+
+      - name: Test LP36 HID behavior
+        working-directory: qmk_firmware
+        run: qmk test-c --test lp36_behavior --clean --parallel 2
 
       - name: Lint keyboard definition
         working-directory: qmk_firmware

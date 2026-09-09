@@ -11,10 +11,10 @@ My 36-key LP36 QMK layout for Windows, inspired by
 ## Layout
 
 - Seven layers: Base, Navigation, Mouse, Media, Number, Symbol, and Function
-- Bilateral Windows home-row mods with typing-flow suppression
+- Bilateral "timeless" home-row mods with typing-flow suppression
 - Six thumb layer-taps
-- 31 layer-aware, prior-idle-gated combos
-- Modifier-sensitive punctuation and tap-preferred navigation holds
+- 27 layer-aware, prior-idle-gated combos
+- Repeatable modifier-sensitive punctuation and dedicated navigation keys
 - Mouse keys and media controls
 - RP2040 BOOTSEL entry: hold the leftmost Esc/Media thumb and press `Q`
 
@@ -39,11 +39,18 @@ picotool load -v -x lp36_default.uf2
 ## Keymap diagrams
 
 The diagrams use [keymap-drawer](https://github.com/caksoylar/keymap-drawer).
-Install `keymap-drawer==0.22.0`, then regenerate the checked-in diagrams with:
+Install `keymap-drawer==0.22.0`. With the LP36 overlay installed in a QMK
+checkout, synchronize the main diagram source from `keymap.c`, then render all
+checked-in images:
 
 ```sh
+./scripts/sync-keymap.sh /path/to/qmk_firmware
 ./scripts/render-keymap.sh
 ```
 
-The QMK keymap is authoritative; the YAML files are maintained as readable
-diagram sources.
+The firmware workflow also runs host-side QMK report tests for held combo keys,
+home-row quick-tap repeat, dedicated arrows, modifier morphs, and independent
+mouse-direction acceleration before compiling the UF2.
+
+The QMK keymap is authoritative. Combo annotations remain in a small separate
+diagram source because QMK's JSON exporter does not include combo metadata.

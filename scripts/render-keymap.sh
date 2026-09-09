@@ -1,13 +1,21 @@
 #!/bin/sh
 set -eu
 
-keymap -c keymap-drawer/config.yaml draw \
+run_keymap() {
+    if command -v keymap >/dev/null 2>&1; then
+        keymap "$@"
+    else
+        uvx --from keymap-drawer==0.22.0 -- keymap "$@"
+    fi
+}
+
+run_keymap -c keymap-drawer/config.yaml draw \
     -j keyboards/lp36/keyboard.json \
     -l LAYOUT \
     -o keymap-drawer/lp36.svg \
     keymap-drawer/lp36.yaml
 
-keymap -c keymap-drawer/config.yaml draw \
+run_keymap -c keymap-drawer/config.yaml draw \
     -j keyboards/lp36/keyboard.json \
     -l LAYOUT \
     -o keymap-drawer/lp36-combos.svg \

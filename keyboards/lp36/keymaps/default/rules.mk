@@ -6,3 +6,5 @@ NKRO_ENABLE = yes
 RGBLIGHT_ENABLE = yes
 VIA_ENABLE = no
 VIAL_ENABLE = no
+
+SRC += tap_hold.c morph.c pointer.c

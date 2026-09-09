@@ -7,12 +7,14 @@ on:
       - "keyboards/lp36/keymaps/**"
       - "keymap-drawer/**"
       - "scripts/render-keymap.sh"
+      - "scripts/sync-keymap.sh"
       - ".github/workflows/keymap.yml"
   pull_request:
     paths:
       - "keyboards/lp36/keymaps/**"
       - "keymap-drawer/**"
       - "scripts/render-keymap.sh"
+      - "scripts/sync-keymap.sh"
       - ".github/workflows/keymap.yml"
   workflow_dispatch:
 

@@ -11,13 +11,9 @@ layers:
     - [Esc, Tab, Space, Bksp, Enter, Del]
 
 combos:
-  - {p: [1, 2], k: Esc, l: [HORIZONTAL], a: top}
-  - {p: [11, 12], k: "Tab\n⇧Alt", l: [HORIZONTAL], a: top}
   - {p: [21, 23], k: Cut, l: [HORIZONTAL], a: bottom, o: -0.7}
   - {p: [21, 22], k: Copy, l: [HORIZONTAL], a: bottom, o: 0.0}
   - {p: [22, 23], k: Paste, l: [HORIZONTAL], a: bottom, o: 0.7}
-  - {p: [6, 7], k: Bksp, l: [HORIZONTAL], a: top}
-  - {p: [7, 8], k: Del, l: [HORIZONTAL], a: top}
   - {p: [16, 17], k: "(\n<", l: [HORIZONTAL], a: top}
   - {p: [17, 18], k: ")\n>", l: [HORIZONTAL], a: top}
   - {p: [26, 27], k: "[\n{", l: [HORIZONTAL], a: bottom}

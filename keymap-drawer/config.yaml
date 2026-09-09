@@ -28,3 +28,61 @@ draw_config:
     text.shifted { transform: translateY(5px); }
     text.combo { font-size: 9px; }
     path { stroke: #57606a; stroke-width: 1; fill: none; }
+
+parse_config:
+  raw_binding_map:
+    HM_A: {t: A, h: Win}
+    HM_S: {t: S, h: Alt}
+    HM_D: {t: D, h: Ctrl}
+    HM_F: {t: F, h: Shift}
+    HM_J: {t: J, h: Shift}
+    HM_K: {t: K, h: Ctrl}
+    HM_L: {t: L, h: Alt}
+    HM_QUOT: {t: "'", h: Win}
+    TH_ESC: {t: Esc, h: MEDIA}
+    TH_TAB: {t: Tab, h: NAV}
+    TH_SPC: {t: Space, h: MOUSE}
+    TH_BSPC: {t: Bksp, h: SYM}
+    TH_ENT: {t: Enter, h: NUM}
+    TH_DEL: {t: Del, h: FUNC}
+    CM_MORPH: {t: ",", s: ";"}
+    DT_MORPH: {t: ".", s: ":"}
+    QEXCL: {t: "?", s: "!"}
+    MM_LEFT: Mouse Left
+    MM_DOWN: Mouse Down
+    MM_UP: Mouse Up
+    MM_RIGHT: Mouse Right
+    MS_WHLL: Wheel Left
+    MS_WHLD: Wheel Down
+    MS_WHLU: Wheel Up
+    MS_WHLR: Wheel Right
+    MS_BTN1: Button 1
+    MS_BTN2: Button 2
+    MS_BTN3: Button 3
+    QK_BOOT: BOOT
+    KC_AGAIN: Redo
+    KC_PASTE: Paste
+    KC_COPY: Copy
+    KC_CUT: Cut
+    KC_UNDO: Undo
+    LCTL(KC_UP): Paragraph Up
+    LCTL(KC_RGHT): Word Forward
+    LCTL(KC_LEFT): Word Backward
+    LCTL(KC_DOWN): Paragraph Down
+    S(KC_LBRC): "{"
+    S(KC_RBRC): "}"
+    S(KC_7): "&"
+    S(KC_8): "*"
+    S(KC_9): "("
+    S(KC_SCLN): ":"
+    S(KC_4): "$"
+    S(KC_5): "%"
+    S(KC_6): "^"
+    S(KC_EQL): "+"
+    S(KC_GRV): "~"
+    S(KC_1): "!"
+    S(KC_2): "@"
+    S(KC_3): "#"
+    S(KC_BSLS): "|"
+    S(KC_0): ")"
+    S(KC_MINS): "_"
