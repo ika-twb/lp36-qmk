@@ -31,6 +31,10 @@ enum custom_keycodes {
     NV_RIGHT,
     NV_BSPC,
     NV_DEL,
+    MM_LEFT,
+    MM_DOWN,
+    MM_UP,
+    MM_RIGHT,
 };
 
 #define HM_A LGUI_T(KC_A)
@@ -69,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [MOUSE] = LAYOUT(
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                KC_AGAIN, KC_PASTE, KC_COPY, KC_CUT, KC_UNDO,
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                MS_LEFT,  MS_DOWN,  MS_UP,   MS_RGHT, KC_NO,
+        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                MM_LEFT,  MM_DOWN,  MM_UP,   MM_RIGHT, KC_NO,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                MS_WHLL,  MS_WHLD,  MS_WHLU, MS_WHLR, KC_NO,
                       KC_NO, KC_NO, KC_NO,                MS_BTN1,  MS_BTN2,  MS_BTN3
     ),
@@ -411,6 +415,7 @@ typedef enum {
     NAV_PENDING,
     NAV_TAPPED,
     NAV_HELD,
+    NAV_REPEATING,
 } nav_resolution_t;
 
 typedef struct {
@@ -469,6 +474,35 @@ static void interrupt_nav_hold_taps(keypos_t position) {
             resolve_nav_tap(i);
         }
     }
+}
+
+/* ---------- Per-direction mouse acceleration ---------- */
+
+typedef struct {
+    bool active;
+    uint16_t started;
+} mouse_move_state_t;
+
+static mouse_move_state_t mouse_moves[4];
+static uint16_t mouse_move_timer;
+
+static uint8_t mouse_move_step(uint8_t index) {
+    uint16_t elapsed = timer_elapsed(mouse_moves[index].started);
+    if (elapsed >= 500) {
+        return 38;
+    }
+    return 1 + ((uint32_t)elapsed * 37U) / 500U;
+}
+
+static void clear_mouse_moves(void) {
+    memset(mouse_moves, 0, sizeof(mouse_moves));
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    if (!layer_state_cmp(state, MOUSE)) {
+        clear_mouse_moves();
+    }
+    return state;
 }
 
 /* ---------- QMK tap-hold policy matching the ZMK behaviors ---------- */
@@ -566,14 +600,35 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 .resolution = NAV_PENDING,
                 .position = record->event.key,
             };
+            if (state->quick_tap) {
+                register_code16(nav_tap_keycode(index));
+                state->resolution = NAV_REPEATING;
+            }
         } else if (state->active) {
             if (state->resolution == NAV_PENDING) {
                 resolve_nav_tap(index);
             } else if (state->resolution == NAV_HELD) {
                 unregister_code16(nav_hold_keycode(index));
                 register_mods(state->suppressed_ctrl);
+            } else if (state->resolution == NAV_REPEATING) {
+                unregister_code16(nav_tap_keycode(index));
+                state->last_tap = timer_read();
             }
             state->active = false;
+        }
+        return false;
+    }
+
+    if (keycode >= MM_LEFT && keycode <= MM_RIGHT) {
+        uint8_t move_index = keycode - MM_LEFT;
+        if (record->event.pressed) {
+            mouse_moves[move_index] = (mouse_move_state_t){
+                .active = true,
+                .started = timer_read(),
+            };
+            mouse_move_timer = timer_read() - 16;
+        } else {
+            mouse_moves[move_index].active = false;
         }
         return false;
     }
@@ -593,5 +648,19 @@ void matrix_scan_user(void) {
             timer_elapsed(state->timer) >= 220) {
             resolve_nav_hold(i);
         }
+    }
+
+    bool moving = mouse_moves[0].active || mouse_moves[1].active ||
+                  mouse_moves[2].active || mouse_moves[3].active;
+    if (moving && timer_elapsed(mouse_move_timer) >= 16) {
+        report_mouse_t report = mousekey_get_report();
+        report.x = (mouse_moves[3].active ? mouse_move_step(3) : 0) -
+                   (mouse_moves[0].active ? mouse_move_step(0) : 0);
+        report.y = (mouse_moves[1].active ? mouse_move_step(1) : 0) -
+                   (mouse_moves[2].active ? mouse_move_step(2) : 0);
+        report.v = 0;
+        report.h = 0;
+        host_mouse_send(&report);
+        mouse_move_timer = timer_read();
     }
 }
