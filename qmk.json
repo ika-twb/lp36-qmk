@@ -1,0 +1,6 @@
+{
+  "userspace_version": "1.0",
+  "build_targets": [
+    ["lp36", "temper_win_work"]
+  ]
+}

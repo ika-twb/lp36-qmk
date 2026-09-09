@@ -1,0 +1,42 @@
+layers:
+  BASE:
+    - [Q, W, E, R, T, Y, U, I, O, P]
+    - [{t: A, h: Win}, {t: S, h: Alt}, {t: D, h: Ctrl}, {t: F, h: Shift}, G, H, {t: J, h: Shift}, {t: K, h: Ctrl}, {t: L, h: Alt}, {t: "'", h: Win}]
+    - [Z, X, C, V, B, N, M, {t: ",", s: "; / <"}, {t: ".", s: ": / >"}, {t: "?", s: "!"}]
+    - [{t: Esc, h: MEDIA}, {t: Tab, h: NAV}, {t: Space, h: MOUSE}, {t: Bksp, h: SYM}, {t: Enter, h: NUM}, {t: Del, h: FUNC}]
+
+  NAV:
+    - ["", "", "Ctrl+Shift+[", "Ctrl+Shift+]", "", Redo, {t: Bksp, h: Ctrl+Bksp}, {t: Del, h: Ctrl+Del}, Cut, Undo]
+    - [Alt+F4, Alt+Tab, Ctrl+Win+Left, Ctrl+Win+Right, "", {t: Left, h: Home}, {t: Down, h: Ctrl+End}, {t: Up, h: Ctrl+Home}, {t: Right, h: End}, Caps]
+    - [Shift, "", "Win+Shift+[", "Win+Shift+]", "", Home, PgDn, PgUp, End, Ins]
+    - ["", {type: held}, "", Ctrl+Space, Bksp, Del]
+
+  MOUSE:
+    - ["", "", "", "", "", Redo, Paste, Copy, Cut, Undo]
+    - ["", "", "", "", "", Mouse Left, Mouse Down, Mouse Up, Mouse Right, ""]
+    - ["", "", "", "", "", Wheel Left, Wheel Down, Wheel Up, Wheel Right, ""]
+    - ["", "", {type: held}, Button 1, Button 2, Button 3]
+
+  MEDIA:
+    - [BOOT, "", "", "", "", "", "", "", "", ""]
+    - ["", "", "", "", "", Previous, Vol Down, Vol Up, Next, Mute]
+    - ["", "", "", "", "", "", "", "", "", ""]
+    - [{type: held}, "", "", Stop, Play/Pause, ""]
+
+  NUM:
+    - ["[", "7", "8", "9", "]", "", "", "", "", ""]
+    - [";", "4", "5", "6", "=", "", "", "", "", ""]
+    - ["`", "1", "2", "3", "\\", "", "", "", "", ""]
+    - ["-", "0", ".", "", {type: held}, ""]
+
+  SYM:
+    - ["{", "&", "*", "(", "}", "", "", "", "", ""]
+    - [":", "$", "%", "^", "+", "", "", "", "", ""]
+    - ["~", "!", "@", "#", "|", "", "", "", "", ""]
+    - ["(", ")", "_", {type: held}, "", ""]
+
+  FUNC:
+    - ["", F7, F8, F9, F10, "", "", "", "", ""]
+    - ["", F4, F5, F6, F11, "", "", "", "", ""]
+    - ["", F1, F2, F3, F12, "", "", "", "", ""]
+    - ["", "", "", "", "", {type: held}]
