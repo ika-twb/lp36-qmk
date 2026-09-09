@@ -39,14 +39,13 @@ jobs:
         working-directory: qmk_firmware
         run: qmk lint -kb lp36
 
-      - name: Compile Temper win_work firmware
+      - name: Compile LP36 firmware
         working-directory: qmk_firmware
-        run: qmk compile -kb lp36 -km temper_win_work
+        run: qmk compile -kb lp36 -km default
 
       - name: Upload UF2
         uses: actions/upload-artifact@v4
         with:
-          name: lp36-temper-win-work-${{ github.sha }}
-          path: qmk_firmware/lp36_temper_win_work.uf2
+          name: lp36-firmware-${{ github.sha }}
+          path: qmk_firmware/lp36_default.uf2
           if-no-files-found: error
-

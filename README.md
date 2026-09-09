@@ -20,26 +20,26 @@ My 36-key LP36 QMK layout for Windows, inspired by
 
 ## Build
 
-GitHub Actions builds `lp36_temper_win_work.uf2` on every push and pull request.
+GitHub Actions builds `lp36_default.uf2` on every push and pull request.
 
 For a local Vial-QMK checkout, copy `keyboards/lp36` into its `keyboards`
 directory and run:
 
 ```sh
 qmk lint -kb lp36
-qmk compile -kb lp36 -km temper_win_work
+qmk compile -kb lp36 -km default
 ```
 
 Enter BOOTSEL with Media+Q, then copy the UF2 to `RPI-RP2` or flash it with:
 
 ```sh
-picotool load -v -x lp36_temper_win_work.uf2
+picotool load -v -x lp36_default.uf2
 ```
 
 ## Keymap diagrams
 
 The diagrams use [keymap-drawer](https://github.com/caksoylar/keymap-drawer).
-Install `keymap-drawer==0.22.0`, then regenerate both checked-in SVGs with:
+Install `keymap-drawer==0.22.0`, then regenerate the checked-in diagrams with:
 
 ```sh
 ./scripts/render-keymap.sh
