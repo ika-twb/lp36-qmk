@@ -6,7 +6,7 @@ My 36-key LP36 QMK layout for Windows, inspired by
 
 ![LP36 keymap](keymap-drawer/lp36.svg)
 
-[Combo reference](keymap-drawer/lp36-combos.svg)
+![LP36 combo reference](keymap-drawer/lp36-combos.png)
 
 ## Layout
 

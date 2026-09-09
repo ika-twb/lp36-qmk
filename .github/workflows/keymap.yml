@@ -30,6 +30,10 @@ jobs:
         with:
           python-version: "3.12"
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
       - name: Install keymap-drawer
         run: python -m pip install keymap-drawer==0.22.0
 
@@ -37,11 +41,13 @@ jobs:
         run: ./scripts/render-keymap.sh
 
       - name: Require committed images to be current
-        run: git diff --exit-code -- keymap-drawer/lp36.svg keymap-drawer/lp36-combos.svg
+        run: git diff --exit-code -- keymap-drawer/lp36.svg keymap-drawer/lp36-combos.svg keymap-drawer/lp36-combos.png
 
       - name: Upload rendered keymaps
         uses: actions/upload-artifact@v4
         with:
           name: lp36-keymap-${{ github.sha }}
-          path: keymap-drawer/*.svg
+          path: |
+            keymap-drawer/*.svg
+            keymap-drawer/*.png
           if-no-files-found: error

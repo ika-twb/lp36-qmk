@@ -1,5 +1,5 @@
 draw_config:
-  dark_mode: auto
+  dark_mode: false
   key_w: 66
   key_h: 62
   key_rx: 6

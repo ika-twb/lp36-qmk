@@ -13,3 +13,9 @@ keymap -c keymap-drawer/config.yaml draw \
     -o keymap-drawer/lp36-combos.svg \
     keymap-drawer/lp36-combos.yaml
 
+npx --yes sharp-cli@6.1.0 \
+    -i keymap-drawer/lp36-combos.svg \
+    -o keymap-drawer/lp36-combos.png \
+    --format png \
+    --density 144 \
+    flatten '#ffffff'
