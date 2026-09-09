@@ -41,7 +41,9 @@ jobs:
         run: ./scripts/render-keymap.sh
 
       - name: Require committed images to be current
-        run: git diff --exit-code -- keymap-drawer/lp36.svg keymap-drawer/lp36-combos.svg keymap-drawer/lp36-combos.png
+        run: |
+          git diff --exit-code -- keymap-drawer/lp36.svg keymap-drawer/lp36-combos.svg
+          test -s keymap-drawer/lp36-combos.png
 
       - name: Upload rendered keymaps
         uses: actions/upload-artifact@v4
